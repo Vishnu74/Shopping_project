@@ -65,11 +65,11 @@ public class UserRepositoryTest {
 		userrepo.save(usernames);
 	}
 
-	@Test
-	public boolean isEmailUnique(String email) {
-		User userByEmail = userrepo.getUserByEmail(email);
-		return userByEmail == null;
-	}
+//	@Test
+//	public boolean isEmailUnique(String email) {
+//		User userByEmail = userrepo.getUserByEmail(email);
+//		return userByEmail == null;
+//	}
 	@Test
 	public void testGetUserByEmail()
 	{

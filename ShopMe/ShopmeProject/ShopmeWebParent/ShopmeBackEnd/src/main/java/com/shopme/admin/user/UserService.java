@@ -29,11 +29,30 @@ public class UserService {
 	return (List<Role>) rolerepo.findAll()	;
 	}
 	public void save(User user) {
-//		encodePassword(user);
+		boolean isUpdatingUser=(user.getId()!= null);
+		if(isUpdatingUser) {
+			User userExisting=userrespo.findById(user.getId()).get();
+			if(user.getPassword().isEmpty())
+			{
+				user.setPassword(userExisting.getPassword());
+			}
+			else
+			{
+				encodePassword(user);
+			}
+			
+		}
+		
+//		
+		
 		userrespo.save(user);
 		
 	}
 
+	private void encodePassword(User user) {
+		// TODO Auto-generated method stub
+		
+	}
 	public boolean isEmailUnique(String email) {
 		User userByEmail = userrespo.getUserByEmail(email);
 		return userByEmail == null;

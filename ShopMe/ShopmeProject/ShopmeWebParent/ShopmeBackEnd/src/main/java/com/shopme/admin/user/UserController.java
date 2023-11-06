@@ -52,8 +52,10 @@ public class UserController {
 	public String editUser(@PathVariable (name="id")Integer id,Model model,RedirectAttributes redirectattributes) {
 		try
 		{
+			List<Role> listRoles = userservice.listRoles();
 			User user =userservice.get(id);
 			model.addAttribute("user",user);
+			model.addAttribute("listRoles", listRoles);
 			model.addAttribute("pageTitle","Edit User(ID :"+id+")");
 			return "users_form";
 		}
